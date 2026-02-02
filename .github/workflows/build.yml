@@ -17,13 +17,9 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install esp8266:esp8266@2.0.0 --additional-urls http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
-      - name: Install Mini OLED Library
-        run: |
-          # Ini nama ID resmi di library manager, pasti ketemu
-          arduino-cli lib install "ESP8266 OLED Driver for SSD1306 displays"
-
       - name: Compile Sketch
         run: |
+          # Kita compile tanpa install library luar untuk tes kestabilan
           arduino-cli compile --fqbn esp8266:esp8266:generic --output-dir ./build ./GMpro86.ino
 
       - name: Upload Binary
