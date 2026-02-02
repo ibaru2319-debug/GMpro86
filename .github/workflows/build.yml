@@ -19,8 +19,8 @@ jobs:
 
       - name: Install Mini OLED Library
         run: |
-          # Library ini sangat ringan dan mendukung resolusi custom 64x48
-          arduino-cli lib install "ESP8266 dan ESP32 OLED driver for SSD1306 displays"
+          # Pakai nama teknis library yang pasti ketemu di server GitHub
+          arduino-cli lib install "ESP8266_and_ESP32_OLED_driver_for_SSD1306_displays"
 
       - name: Compile Sketch
         run: |
