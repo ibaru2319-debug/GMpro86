@@ -19,8 +19,8 @@ jobs:
 
       - name: Install Mini OLED Library
         run: |
-          # Pakai nama teknis library yang pasti ketemu di server GitHub
-          arduino-cli lib install "ESP8266_and_ESP32_OLED_driver_for_SSD1306_displays"
+          # Ini nama ID resmi di library manager, pasti ketemu
+          arduino-cli lib install "ESP8266 OLED Driver for SSD1306 displays"
 
       - name: Compile Sketch
         run: |
