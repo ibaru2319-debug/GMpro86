@@ -19,7 +19,6 @@ jobs:
 
       - name: Compile Sketch
         run: |
-          # Kita compile tanpa install library luar untuk tes kestabilan
           arduino-cli compile --fqbn esp8266:esp8266:generic --output-dir ./build ./GMpro86.ino
 
       - name: Upload Binary
