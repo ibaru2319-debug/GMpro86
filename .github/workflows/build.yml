@@ -1,0 +1,34 @@
+name: Build GM-PRO 86 Binaries
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Install ESP8266 Platform (SDK 2.0.0)
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install esp8266:esp8266@2.0.0 --additional-urls http://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+      - name: Install Libraries
+        run: |
+          arduino-cli lib install "Adafruit SSD1306"
+          arduino-cli lib install "Adafruit GFX Library"
+          arduino-cli lib install "Adafruit BusIO"
+
+      - name: Compile Sketch
+        run: |
+          arduino-cli compile --fqbn esp8266:esp8266:generic:xtal=80,resetmethod=ck,crystal=26,flash_size=4M1M,flash_mode=dio,f_cpu=80,baud=115200 --output-dir ./build ./GMpro86.ino
+
+      - name: Upload Binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: GMPRO86-BIN-SDK2.0.0
+          path: ./build/*.bin
