@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4 # Update ke v4
+        uses: actions/checkout@v4
 
       - name: Setup Arduino CLI
         uses: arduino/setup-arduino-cli@v1
@@ -25,10 +25,10 @@ jobs:
 
       - name: Compile Sketch
         run: |
-          arduino-cli compile --fqbn esp8266:esp8266:generic:xtal=80,resetmethod=ck,crystal=26,flash_size=4M1M,flash_mode=dio,f_cpu=80,baud=115200 --output-dir ./build ./GMpro86.ino
+          arduino-cli compile --fqbn esp8266:esp8266:generic --output-dir ./build ./GMpro86.ino
 
       - name: Upload Binary
-        uses: actions/upload-artifact@v4 # Update ke v4 (Solusi Eror Gambar)
+        uses: actions/upload-artifact@v4
         with:
           name: GMPRO86-BIN-SDK2.0.0
           path: ./build/*.bin
