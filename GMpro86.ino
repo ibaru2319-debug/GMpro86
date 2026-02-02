@@ -6,9 +6,11 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-// Panggil fungsi internal SDK 2.0.0 secara langsung
-extern "C" void wifi_set_channel(uint8 channel);
-extern "C" int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);
+// Definisi fungsi internal SDK 2.0.0
+extern "C" {
+  void wifi_set_channel(uint8 channel);
+  int wifi_send_pkt_freedom(uint8 *buf, int len, bool sys_seq);
+}
 
 const char* admin_ssid = "GMpro86";
 const char* admin_pass = "sangkur87";
