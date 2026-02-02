@@ -17,10 +17,10 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install esp8266:esp8266@2.0.0 --additional-urls http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
-      - name: Install Ultralight Library
+      - name: Install Mini OLED Library
         run: |
-          # Pakai library yang simpel banget biar nggak bentrok
-          arduino-cli lib install "SSD1306Simple"
+          # Library ini sangat ringan dan mendukung resolusi custom 64x48
+          arduino-cli lib install "ESP8266 dan ESP32 OLED driver for SSD1306 displays"
 
       - name: Compile Sketch
         run: |
