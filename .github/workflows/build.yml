@@ -17,11 +17,12 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install esp8266:esp8266@2.0.0 --additional-urls http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
-      - name: Install Libraries
+      - name: Install Legacy Libraries
         run: |
-          arduino-cli lib install "Adafruit SSD1306"
-          arduino-cli lib install "Adafruit GFX Library"
-          arduino-cli lib install "Adafruit BusIO"
+          # Paksa install versi lama agar tidak bentrok dengan SDK 2.0.0
+          arduino-cli lib install "Adafruit GFX Library"@1.10.10
+          arduino-cli lib install "Adafruit SSD1306"@2.4.6
+          arduino-cli lib install "Adafruit BusIO"@1.7.0
 
       - name: Compile Sketch
         run: |
